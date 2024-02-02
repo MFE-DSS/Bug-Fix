@@ -29,6 +29,7 @@ spark.sql.hive.convertMetastoreOrc: false
 Dans la Configuration Avancée des Datasets
 
 Dans les paramètres avancés des datasets Dataiku, ajouter la configuration Spark suivante :
+
 set spark.sql.hive.convertMetastoreOrc=False
 
 ou 
