@@ -68,6 +68,8 @@ Contenu du script /data/dataiku/scripts/nettoyage/mon_fichier_de_nettoyage-engin
 find /data/dataiku/design/tmp/dss-engine-metrics -mtime +30 -exec rm {} \;
 find /data/dataiku/design/tmp/dss-engine-metrics -mtime +30 -exec rmdir {} \;
 
-Pour exécuter ce script automatiquement tous les jours, ajoutez-le à la crontab de l'utilisateur Dataiku :
-0 4 * * * /data/dataiku/scripts/purge/purge_dss-engine-metrics.sh
+# Pour exécuter ce script automatiquement tous les jours, ajoutez-le à la crontab de l'utilisateur Dataiku :
+
+0 4 * * * /data/dataiku/scripts/nettoyage/mon_fichier_de_nettoyage-engine-metrics.sh
+
 Cette ligne exécute le script de purge tous les jours à 4h00 du matin.
