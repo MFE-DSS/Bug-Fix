@@ -61,7 +61,7 @@ Au délà de la database du runtime maintenant deportée dans postgrel il est po
 
 Le script suivant purge les métriques du moteur DSS  > 30 jours, situées dans /tmp/ :
 
-Contenu du script /data/dataiku/scripts/purge/purge_dss-engine-metrics.sh : 
+Contenu du script /data/dataiku/scripts/nettoyage/mon_fichier_de_nettoyage-engine-metrics.sh : 
 #!/bin/bash
 # script de purge des dss engine metrics à 30 jours
 
