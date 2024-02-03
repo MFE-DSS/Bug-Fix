@@ -30,7 +30,7 @@ La migration vers une base de données PostgreSQL nécessite une attention parti
     "builtinConnectionsValidationIntervalMS": 600000,
     "maxPooledBuiltinConnectionsPerDatabase": 50
 }
-
+```
 **## Ajustements Recommandés**
 
 Pour améliorer la résilience aux déconnexions, il est conseillé de réduire l'intervalle de validation de 180000 à 30000 et le temps maximal inactif à 60000. Ces ajustements permettent de mieux gérer les connexions interrompues, même si celles-ci ne sont pas toujours consignées dans les journaux par défaut.
@@ -48,10 +48,11 @@ Pour déplacer les bases de données internes vers un stockage externe, utilisez
 ```bash
 ./bin/dssadmin copy-databases-to-external
 ./bin/dssadmin encrypt-password YOUR-PASSWORD
-
+```
 exemple chiffrement aes 
+```bash
 ./bin/dssadmin encrypt-password e:AES:instance-name#interne#25
-
+```
 ## Bonus : script de nettoyage des fichiers temporaires
 
 Au délà de la database du runtime maintenant deportée dans postgrel il est possible que les fichiers temporaires et streamings logs viennent causer des ralentissements du même ordre.
@@ -62,11 +63,10 @@ Le script suivant purge les métriques du moteur DSS  > 30 jours, situées dans 
 
 Contenu du script /data/dataiku/scripts/purge/purge_dss-engine-metrics.sh : 
 #!/bin/bash
-# script de purge des dss engine metrics à 10 jours
-# TCH 01/02/2024
+# script de purge des dss engine metrics à 30 jours
 
-find /data/dataiku/design/tmp/dss-engine-metrics -mtime +10 -exec rm {} \;
-find /data/dataiku/design/tmp/dss-engine-metrics -mtime +10 -exec rmdir {} \;
+find /data/dataiku/design/tmp/dss-engine-metrics -mtime +30 -exec rm {} \;
+find /data/dataiku/design/tmp/dss-engine-metrics -mtime +30 -exec rmdir {} \;
 
 Pour exécuter ce script automatiquement tous les jours, ajoutez-le à la crontab de l'utilisateur Dataiku :
 0 4 * * * /data/dataiku/scripts/purge/purge_dss-engine-metrics.sh
