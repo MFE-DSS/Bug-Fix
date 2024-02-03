@@ -39,7 +39,7 @@ Clés de Configuration Spécifiques
     externalConnectionsMaxIdleTimeMS : Temps maximal (en millisecondes) pendant lequel une connexion externe peut rester inactive avant d'être fermée. Valeur recommandée : 300000.
     externalConnectionsValidationIntervalMS : Intervalle (en millisecondes) au bout duquel une connexion externe est validée. Valeur recommandée : 30000.
 
-# Migration vers PostgreSQL et Maintenance de Dataiku DSS
+## Migration vers PostgreSQL et Maintenance de Dataiku DSS
 
 ### Copier les Bases de Données vers un Emplacement Externe
 
@@ -63,12 +63,12 @@ Le script suivant purge les métriques du moteur DSS  > 30 jours, situées dans 
 
 Contenu du script /data/dataiku/scripts/nettoyage/mon_fichier_de_nettoyage-engine-metrics.sh : 
 #!/bin/bash
-# script de purge des dss engine metrics à 30 jours
+## script de purge des dss engine metrics à 30 jours
 
 find /data/dataiku/design/tmp/dss-engine-metrics -mtime +30 -exec rm {} \;
 find /data/dataiku/design/tmp/dss-engine-metrics -mtime +30 -exec rmdir {} \;
 
-# Pour exécuter ce script automatiquement tous les jours, ajoutez-le à la crontab de l'utilisateur Dataiku :
+## Pour exécuter ce script automatiquement tous les jours, ajoutez-le à la crontab de l'utilisateur Dataiku :
 
 0 4 * * * /data/dataiku/scripts/nettoyage/mon_fichier_de_nettoyage-engine-metrics.sh
 
